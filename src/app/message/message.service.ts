@@ -26,6 +26,7 @@ export class MessageService {
   create: Subject<Message> = new Subject<Message>();
 
   constructor() {
+    // execute the fuctor
     this.messages = this.updates
     // watch the updates and accumulate operations on the messages
       .scan((messages: Message[],
@@ -34,26 +35,27 @@ export class MessageService {
         },
         initialMessages)
 
+    // return a functor
     this.create
       .map(function (message: Message): IMessagesOperation {
-        debugger
         return (messages: Message[]) => {
           return messages.concat(message);
         };
       })
       .subscribe(this.updates);
-    debugger
+
     this.newMessages
       .subscribe(this.create);
 
-    this.newMessages.subscribe(val => console.log(val))
-    this.messages.subscribe(val => console.log(val))
-
+    // for debugging
+    /*
+     this.newMessages.subscribe(val => console.log(val))
+     this.messages.subscribe(val => console.log(val))
+     */
   }
 
   addMessage(message: Message): void {
     this.newMessages.next(message);
-    debugger;
   }
 
 }

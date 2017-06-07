@@ -1,6 +1,6 @@
 <ul>
   <li
-    *ngFor="let message of messages"
+    *ngFor="let message of messages  | async"
   >
     {{message.text}}
   </li>
