@@ -15,6 +15,7 @@ export class AppComponent {
   }
 
   test1(): void {
-    this.messageService.addMessage(new Message({text: 'hello'}))
+
+    this.messageService.addMessage(new Message({text: 'hello' + Math.random()}))
   }
 }
