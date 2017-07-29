@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.messageService.newMessages.subscribe(message => this.lastMessage = message);
+    this.messageService.newMessages.subscribe(message => console.log(message));
 
   }
 
